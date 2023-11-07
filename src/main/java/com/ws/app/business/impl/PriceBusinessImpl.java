@@ -2,7 +2,6 @@ package com.ws.app.business.impl;
 
 import com.ws.app.business.IPriceBusiness;
 import com.ws.app.mapper.PriceMapper;
-import com.ws.app.model.PriceEntity;
 import com.ws.app.model.PriceResponse;
 import com.ws.app.model.PricesResponse;
 import com.ws.app.model.RequestPriceFilter;
