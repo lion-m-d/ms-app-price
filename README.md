@@ -18,7 +18,7 @@ Asegúrate de tener lo siguiente instalado y configurado:
 _Copiar y ejecutar el siguiente comando en una terminal git_
 
 ```bash
-git clone https://github.com/lion-m-d/ws-app-price.git
+git clone https://github.com/lion-m-d/ms-app-price.git
 ```
 
 _Dirigirse al IDE y importar el archivo_
