@@ -1,0 +1,8 @@
+.openapi-generator-ignore
+README.md
+pom.xml
+src/main/java/com/ws/app/config/ApiUtil.java
+src/main/java/com/ws/app/config/PriceApi.java
+src/main/java/com/ws/app/model/PriceResponse.java
+src/main/java/com/ws/app/model/PricesResponse.java
+src/main/java/com/ws/app/model/RequestPriceFilter.java

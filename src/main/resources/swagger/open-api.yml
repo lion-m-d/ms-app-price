@@ -1,0 +1,165 @@
+openapi: 3.0.3
+info:
+  title: PRICE - OpenAPI 3.0
+  description: |-
+    Service para obtener precios de productos
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: robert180596md@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.1
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:8081
+  - url: localhost:8081
+tags:
+  - name: Price
+    description: Obtener a todos los compradores
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+paths:
+  /price:
+    get:
+      tags:
+        - Price
+      summary: Obtener precio con los filtros indicados
+      description: Obtener precios
+      x-spring-webflux-controller: true
+      parameters:
+        - name: requestPriceFilter
+          in: query
+          description: Request Price parameters
+          required: true
+          schema:
+            $ref: '#/components/schemas/RequestPriceFilter'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceResponse'
+        '400':
+          description: Invalid request
+        '204':
+          description: Not Content
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+  /price/all:
+    get:
+      tags:
+        - Price
+      summary: Obtener los precios y productos
+      description: Obtener los precios y productos
+      x-spring-webflux-controller: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricesResponse'
+        '400':
+          description: Invalid request
+        '204':
+          description: Not Content
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+components:
+  schemas:
+    RequestPriceFilter:
+      type: object
+      properties:
+        date:
+          type: string
+          description: Date parameter
+          example: 2020-12-31
+        hour:
+          type: string
+          format: custom-time
+          description: Hour parameter
+          example: 10:00
+        product:
+          type: integer
+          description: Product ID parameter
+          example: 35455
+        brand:
+          type: integer
+          description: Brand ID parameter
+          example: 1
+      required:
+        - date
+        - hour
+        - product
+        - brand
+    PricesResponse:
+      type: object
+      properties:
+        priceList:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        startDate:
+          type: string
+          description: fecha inicio del precio
+          example: 2020-06-15T16:00:00
+        endDate:
+          type: string
+          description: fecha fin del precio
+          example: 2020-12-31T23:59:59
+        product:
+          type: string
+          description: Nombre del producto
+          example: Jeans
+        brand:
+          type: string
+          description: Marca del producto
+          example: ZARA
+        priority:
+          type: string
+          description: prioridad del precio del product
+          example: 1
+        price:
+          type: number
+          description: precio del producto
+          example: 36.40
+        currency:
+          type: string
+          description: Tipo de moneta
+          example: EUR
+    PriceResponse:
+      type: object
+      properties:
+        priceList:
+          type: integer
+          description: id
+          format: int64
+          example: 1
+        date:
+          type: string
+          description: fecha inicio del precio
+          example: 2020-06-15T16:00:00
+        product:
+          type: integer
+          description: id del producto
+          example: 1
+        brand:
+          type: integer
+          description: id del producto
+          example: 1
+        price:
+          type: number
+          description: precio del producto
+          example: 36.40
+
+
